@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="default_sounds_names">
+        <item>Crash</item>
+        <item>Buzzer</item>
+        <item>Cicada</item>
+        <item>Water drop</item>
+        <item>Horn 1</item>
+        <item>Horn 2</item>
+        <item>Horses</item>
+        <item>Cow</item>
+        <item>Steps</item>
+        <item>Cuckoo 1</item>
+        <item>Cuckoo 2</item>
+        <item>Lion</item>
+        <item>Alarm</item>
+        <item>Bear</item>
+        <item>Wrong phone</item>
+        <item>Busy phone</item>
+        <item>Dog 1</item>
+        <item>Whistling</item>
+        <item>Broken glass</item>
+        <item>Siren</item>
+        <item>Dogs</item>
+        <item>Phone</item>
+        <item>Dog 2</item>
+        <item>Dog 3</item>
+        <item>Wolf 1</item>
+        <item>Shot</item>
+        <item>Wolf 2</item>
+        <item>Frog</item>
+        <item>Bells</item>
+        <item>Tone 1</item>
+        <item>Tone 2</item>
+        <item>Tone 3</item>
+        <item>Tone 4</item>
+        <item>Tone 5</item>
+        <item>Tone 6</item>
+        <item>Tone 7</item>
+        <item>Tone 8</item>
+    </string-array>
+</resources>

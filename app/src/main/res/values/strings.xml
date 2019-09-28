@@ -1,0 +1,139 @@
+<resources>
+    <string name="app_name">KunOFF</string>
+    <string name="unknown_error">Unknown error.</string>
+    <string name="unknown_error_cz">Neznámá chyba.</string>
+
+    <string name="need_permission">Need Read external storage permission.</string>
+    <string name="need_permission_cz">Aplikace požaduje oprávnění k přístupu k souborům.</string>
+
+    <string name="grant_permission">Please grant permission</string>
+    <string name="grant_permission_cz">Prosím, udělte oprávnění</string>
+
+    <string name="ok">OK</string>
+    <string name="info">Info</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="playlist">Playlist</string>
+
+    <string name="seconds">seconds</string>
+    <string name="seconds_cz">sekund</string>
+
+    <string name="minutes">minutes</string>
+    <string name="minutes_cz">minut</string>
+
+    <string name="hours">hours</string>
+    <string name="hours_cz">hodin</string>
+
+    <string name="title_first_sound_after">Play the first startup sound after:</string>
+    <string name="title_first_sound_after_cz">První zvuk přehrát za:</string>
+
+    <string name="title_pause_between_sounds">Pause between sounds:</string>
+    <string name="title_pause_between_sounds_cz">Pauza mezi zvuky:</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="cancel_cz">Zrušit</string>
+
+    <string name="settings">Settings</string>
+    <string name="settings_cz">Nastavení</string>
+
+    <string name="edit_playlist">Edit playlist</string>
+    <string name="edit_playlist_cz">Upravit playlist</string>
+
+    <string name="show_playlist">Show playlist</string>
+    <string name="show_playlist_cz">Zobrazit playlist</string>
+
+    <string name="error">Error</string>
+    <string name="error_cz">Chyba</string>
+
+    <string name="empty_playlist">You have selected your custom playlist, but this playlist is empty. Go to the settings and create it or select the default playlist.</string>
+    <string name="empty_playlist_cz">V nastavení máte zvolen vlastní playlist. Ten je ale prázdný. V nastavení playlist vytvořte nebo zvolte defaultní playlist.</string>
+
+    <string name="all_items_disabled">All playlist items are disabled. Go to the playlist and at least one allow.</string>
+    <string name="all_items_disabled_cz">Všechny položky playlistu jsou zakázané. V nastavení alespoň jednu položku povolte.</string>
+
+    <string name="default_playlist">Default playlist</string>
+    <string name="default_playlist_cz">Defaultní playlist</string>
+
+    <string name="custom_playlist">Custom playlist</string>
+    <string name="custom_playlist_cz">Vlastní playlist</string>
+
+    <string name="label_default">default</string>
+    <string name="label_default_cz">defaultní</string>
+
+    <string name="language">Language</string>
+    <string name="language_cz">Jazyk</string>
+
+    <string name="label_custom">custom</string>
+    <string name="label_custom_cz">vlastní</string>
+
+    <string name="play_random">play random</string>
+    <string name="play_random_cz">přehrávat náhodně</string>
+
+    <string name="number_of_items">Number of items: </string>
+    <string name="number_of_items_cz">Počet položek: </string>
+
+    <string name="no_items"><![CDATA[Playlist is empty. To add an item click <b>HERE</b> or on the red plus at the bottom right.]]></string>
+    <string name="no_items_cz"><![CDATA[Playlist je prázdný. Pro přidání položky klikni <b>ZDE</b> nebo na červené plus vpravo dole.]]></string>
+
+    <string name="text_info_1">Welcome to the app KunOFF!</string>
+    <string name="text_info_1_cz">Vítejte v aplikaci KunOFF!</string>
+
+    <string name="text_info_2">The application was created to be installed in device that will scare the marten. When you start the application, it will automatically play audio files according to your settings. You can play the prepared sounds directly, or you can create your own playlist composed of audio files from your device.</string>
+    <string name="text_info_2_cz">Aplikace byla vytvořena pro instalaci do zařízení, které bude sloužit jako plašička kun. Po spuštění bude aplikace automaticky přehrávat zvukové soubory podle vašeho nastavení. Můžete rovnou přehrávat připravené zvuky nebo můžete vytvořit svůj vlastní playlist, složený z audio souborů z vašeho zařízení.</string>
+
+    <string name="text_info_3">This app was created for the competition announced on the server</string>
+    <string name="text_info_3_cz">Tato aplikace byla vytvořena do soutěže vyhlášené na serveru</string>
+
+    <string name="itnetwork">ITnetwork</string>
+
+    <string name="version">Version:</string>
+    <string name="version_cz">Verze:</string>
+
+    <string name="source_code">Source codes</string>
+    <string name="source_code_cz">Zdrojové kódy</string>
+
+    <string name="here">HERE</string>
+    <string name="here_cz">ZDE</string>
+
+    <string name="not_show_again">Do not display at startup</string>
+    <string name="not_show_again_cz">Nezobrazovat při startu</string>
+
+    <string name="your_string">This is an <u>underline</u> text demo for TextView.</string>
+
+    <string name="error_file_path">Error verifying path to selected file.</string>
+    <string name="error_file_path_cz">Neexistující soubor.</string>
+
+    <string name="unexpected_error_stop_play_cz">Neočekávaná chyba při zastavení přehrávání</string>
+    <string name="unexpected_error_stop_play">Unexpected error when stopping playback</string>
+
+    <string name="next_scaring">Next scaring: </string>
+    <string name="next_scaring_cz">Další plašení: </string>
+
+    <string name="help_remove_item_from_playlist_cz">Odstranění položky z playlistu</string>
+    <string name="help_remove_item_from_playlist">Remove an item from the playlist</string>
+
+    <string name="help_disable_playlist_item_cz">Povolit nebo zakázat přehrávání položky</string>
+    <string name="help_disable_playlist_item">Enable or disable playback of the item</string>
+
+    <string name="help_play_item_now_cz">Přehrání zvukového souboru</string>
+    <string name="help_play_item_now">Play the audio file now</string>
+
+    <string name="help_not_show_cz">Příště již nezobrazovat</string>
+    <string name="help_not_show">Don\'t show again</string>
+
+    <string name="permission_info_cz">Pro vytvoření vlastního playlistu je nutné udělit aplikaci oprávnění k přístupu k souborům ve vašem zařízení. Chcete toto oprávnění udělit?</string>c
+    <string name="permission_info">To create your own playlist, you need to grant the app permission to access files on your device. Do you want to grant this permission?</string>
+
+    <string name="notice_cz">Upozornění</string>
+    <string name="notice">Notice</string>
+
+    <string name="permission_not_granted_cz">Nebylo uděleno požadované oprávnění, proto není možné vytvořit playlist z vlastních souborů.</string>
+    <string name="permission_not_granted">The requested permission has not been granted, so you cannot create a playlist from your own files.</string>
+
+    <string name="incorrect_file_format_cz">Chybný formát vybraného souboru.</string>
+    <string name="incorrect_file_format">Incorrect format of selected file.</string>
+
+    <string name="unknown_file_format_cz">Neznámý formát vybraného souboru.</string>
+    <string name="unknown_file_format">Unknown file format selected.</string>
+
+</resources>

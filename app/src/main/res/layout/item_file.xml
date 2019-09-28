@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#E5E5E5"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/img_play_stop"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        app:srcCompat="@drawable/ic_play" />
+
+    <ImageView
+        android:id="@+id/img_check_box"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toStartOf="@+id/img_play_stop"
+        android:layout_toLeftOf="@+id/img_play_stop"
+        app:srcCompat="@drawable/ic_check_box_on" />
+
+    <ImageView
+        android:id="@+id/img_remove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_toStartOf="@+id/img_check_box"
+        android:layout_toLeftOf="@+id/img_check_box"
+        app:srcCompat="@drawable/ic_delete" />
+
+    <TextView
+        android:id="@+id/label_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="5dp"
+        android:text="1"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/layout_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_toLeftOf="@+id/img_remove"
+        android:layout_toRightOf="@+id/label_number"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/label_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="8sp" />
+    </LinearLayout>
+
+</RelativeLayout>

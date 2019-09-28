@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/bg_help"
+    android:clickable="true">
+
+    <LinearLayout
+        android:id="@+id/layoutHelpItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:id="@+id/layoutHelpDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imgHelpDelete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/labelHelpDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/imgHelpDelete"
+                android:layout_alignBottom="@id/imgHelpDelete"
+                android:layout_toEndOf="@id/imgHelpDelete"
+                android:layout_toRightOf="@id/imgHelpDelete"
+                android:gravity="center_vertical"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                tools:text="@string/help_remove_item_from_playlist_cz" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutHelpEnable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imgHelpEnable"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                app:srcCompat="@drawable/ic_check_box_on" />
+
+            <TextView
+                android:id="@+id/labelHelpEnable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/imgHelpEnable"
+                android:layout_alignBottom="@id/imgHelpEnable"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toEndOf="@id/imgHelpEnable"
+                android:layout_toRightOf="@id/imgHelpEnable"
+                android:gravity="center_vertical"
+                android:text="@string/help_disable_playlist_item_cz"
+                android:textColor="@android:color/black" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutHelpPlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imgHelpPlay"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_play" />
+
+            <TextView
+                android:id="@+id/labelHelpPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/imgHelpPlay"
+                android:layout_alignBottom="@id/imgHelpPlay"
+                android:layout_toEndOf="@id/imgHelpPlay"
+                android:layout_toRightOf="@id/imgHelpPlay"
+                android:gravity="center_vertical"
+                android:text="@string/help_play_item_now_cz"
+                android:textColor="@android:color/black" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#79C4C4C4"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="30dp"
+                android:paddingRight="30dp"
+                android:paddingBottom="5dp"
+                android:text="@string/ok"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

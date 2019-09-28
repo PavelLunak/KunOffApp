@@ -6,6 +6,7 @@ com_crashlytics_export_strings.xml
 
 # Local configuration file (sdk path, etc)
 local.properties
+kunoff.jks
 
 # Gradle generated files
 .gradle/
@@ -14,8 +15,6 @@ local.properties
 .signing/
 
 # User-specific configurations
-.app/*.apk
-.*.jks
 .idea/libraries/
 .idea/workspace.xml
 .idea/tasks.xml

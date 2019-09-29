@@ -136,4 +136,7 @@
     <string name="unknown_file_format_cz">Neznámý formát vybraného souboru.</string>
     <string name="unknown_file_format">Unknown file format selected.</string>
 
+    <string name="question_delet_item_cz">Opravdu smazat položku?</string>
+    <string name="question_delet_item">Do you really delete the item?</string>
+
 </resources>

@@ -298,6 +298,8 @@ public class FragmentSettings extends Fragment implements AppConstants {
             } else {
                 activity.showFragmentAddFile(rb_playlist_default.isChecked());
             }
+        } else {
+            activity.showFragmentAddFile(rb_playlist_default.isChecked());
         }
     }
 }

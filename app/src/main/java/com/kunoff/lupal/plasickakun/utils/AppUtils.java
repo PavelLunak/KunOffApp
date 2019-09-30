@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.TextView;
 

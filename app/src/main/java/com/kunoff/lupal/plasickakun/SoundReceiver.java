@@ -35,11 +35,7 @@ public class SoundReceiver extends BroadcastReceiver {
         if (MainActivity.enabledItemsPositions == null) return;
         if (MainActivity.enabledItemsPositions.isEmpty()) return;
 
-        if (MainActivity.appPrefs.random().get()) {
-            setRandomPosition();
-        } else {
-            getNextPositionToPlay();
-        }
+        findNextItemToPlay();
 
         if (positionToPlay < 0 || positionToPlay >= MainActivity.itemsMedia.size()) return;
 
@@ -64,8 +60,16 @@ public class SoundReceiver extends BroadcastReceiver {
                 MainActivity.m.setDataSource(context, Uri.parse(itemMediaToPlay.getPath()));
                 MainActivity.m.prepare();
             } catch (IOException e) {
+                findNextItemToPlay();
+                setItemPlay(context, positionToPlay);
                 return;
             } catch (NullPointerException e) {
+                findNextItemToPlay();
+                setItemPlay(context, positionToPlay);
+                return;
+            } catch (IllegalArgumentException e) {
+                findNextItemToPlay();
+                setItemPlay(context, positionToPlay);
                 return;
             }
         }
@@ -91,6 +95,11 @@ public class SoundReceiver extends BroadcastReceiver {
         });
 
         MainActivity.m.start();
+    }
+
+    private void findNextItemToPlay() {
+        if (MainActivity.appPrefs.random().get()) setRandomPosition();
+        else getNextPositionToPlay();
     }
 
     private void getNextPositionToPlay() {

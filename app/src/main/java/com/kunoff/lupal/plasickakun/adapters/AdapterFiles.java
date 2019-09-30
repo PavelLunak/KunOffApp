@@ -281,15 +281,15 @@ public class AdapterFiles extends RecyclerView.Adapter<AdapterFiles.DataViewHold
                     MainActivity.m.setDataSource(activity, Uri.parse(itemMediaToPlay.getPath()));
                     MainActivity.m.prepare();
                 } catch (IOException e) {
-                    DialogInfo.createDialog(activity).setTitle(AppUtils.getTextByLanguage(activity, R.string.error_cz, R.string.error)).setMessage("IOException:\n" + e.getMessage()).show();
+                    DialogInfo.createDialog(activity).setTitle(AppUtils.getTextByLanguage(activity, R.string.error_cz, R.string.error)).setMessage(AppUtils.getTextByLanguage(activity, R.string.file_error_cz, R.string.file_error)).show();
                     stopPlayByError();
                     return;
                 } catch (NullPointerException e) {
-                    DialogInfo.createDialog(activity).setTitle(AppUtils.getTextByLanguage(activity, R.string.error_cz, R.string.error)).setMessage("IOException:\n" + e.getMessage()).show();
+                    DialogInfo.createDialog(activity).setTitle(AppUtils.getTextByLanguage(activity, R.string.error_cz, R.string.error)).setMessage(AppUtils.getTextByLanguage(activity, R.string.file_error_cz, R.string.file_error)).show();
                     stopPlayByError();
                     return;
                 } catch (IllegalArgumentException e) {
-                    DialogInfo.createDialog(activity).setTitle(AppUtils.getTextByLanguage(activity, R.string.error_cz, R.string.error)).setMessage("IOException:\n" + e.getMessage()).show();
+                    DialogInfo.createDialog(activity).setTitle(AppUtils.getTextByLanguage(activity, R.string.error_cz, R.string.error)).setMessage(AppUtils.getTextByLanguage(activity, R.string.file_error_cz, R.string.file_error)).show();
                     stopPlayByError();
                     return;
                 }

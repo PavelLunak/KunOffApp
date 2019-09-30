@@ -585,7 +585,7 @@ public class MainActivity extends AppCompatActivity implements AppConstants, Fra
                             .show();
                     return;
                 } else {
-                    if (!mime.contains("audio")) {
+                    if (!mime.contains("audio") && !mime.contains("ogg")) {
                         DialogInfo.createDialog(this)
                                 .setTitle(AppUtils.getTextByLanguage(this, R.string.error_cz, R.string.error))
                                 .setMessage(AppUtils.getTextByLanguage(this, R.string.incorrect_file_format_cz, R.string.incorrect_file_format))

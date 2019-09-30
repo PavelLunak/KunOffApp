@@ -139,4 +139,7 @@
     <string name="question_delet_item_cz">Opravdu smazat položku?</string>
     <string name="question_delet_item">Do you really delete the item?</string>
 
+    <string name="file_error_cz">Chyba při přehrávání souboru.</string>
+    <string name="file_error">Error playing file.</string>
+
 </resources>

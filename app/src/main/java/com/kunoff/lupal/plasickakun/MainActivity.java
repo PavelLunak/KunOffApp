@@ -330,7 +330,8 @@ public class MainActivity extends AppCompatActivity implements AppConstants, Fra
 
     public void selectMediaFile() {
         Intent intent_upload = new Intent();
-        intent_upload.setType("audio/*");
+        //intent_upload.setType("audio/*");
+        intent_upload.setType("*/*");
         intent_upload.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent_upload, REQUEST_CODE_SELECT_AUDIO);
     }

@@ -1,12 +1,16 @@
 package com.kunoff.lupal.plasickakun;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
@@ -20,6 +24,7 @@ import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
 import com.facebook.stetho.Stetho;
+import com.kunoff.lupal.plasickakun.customViews.DialogError;
 import com.kunoff.lupal.plasickakun.customViews.DialogInfo;
 import com.kunoff.lupal.plasickakun.database.DataSource;
 import com.kunoff.lupal.plasickakun.fragments.FragmentFiles;
@@ -32,6 +37,7 @@ import com.kunoff.lupal.plasickakun.fragments.FragmentSettings;
 import com.kunoff.lupal.plasickakun.fragments.FragmentSettings_;
 import com.kunoff.lupal.plasickakun.listeners.OnAllPathItemsLoadedListener;
 import com.kunoff.lupal.plasickakun.listeners.OnDatabaseChangedListener;
+import com.kunoff.lupal.plasickakun.listeners.OnErrorConfirmedListener;
 import com.kunoff.lupal.plasickakun.objects.ItemMedia;
 import com.kunoff.lupal.plasickakun.utils.Animators;
 import com.kunoff.lupal.plasickakun.utils.AppConstants;
@@ -89,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements AppConstants, Fra
 
     public static MediaPlayer m;
 
+    BroadcastReceiver playbackStopReceiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +132,23 @@ public class MainActivity extends AppCompatActivity implements AppConstants, Fra
     protected void onPause() {
         super.onPause();
         if (!isRunning) stopMedia();
+        unRegisterplaybackStopReceiver();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerplaybackStopReceiver();
+
+        if (appPrefs.error().exists()) {
+            stopAfterErrors();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AlarmActions.removeAppNotificationChanel(this);
     }
 
     @AfterViews
@@ -567,6 +592,60 @@ public class MainActivity extends AppCompatActivity implements AppConstants, Fra
         }
 
         return false;
+    }
+
+    public void registerplaybackStopReceiver() {
+        playbackStopReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                stopAfterErrors();
+            }
+        };
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(playbackStopReceiver, new IntentFilter("ACTION_SERVICE_STARTET_BROADCAST"));
+    }
+
+    private void unRegisterplaybackStopReceiver() {
+
+        try {
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(playbackStopReceiver);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void stopAfterErrors() {
+        MainActivity.isRunning = false;
+
+        FragmentMain fragmentMain = (FragmentMain) fragmentManager.findFragmentByTag(FRAGMENT_NAME_FRAGMENT_MAIN);
+        if (fragmentMain != null) {
+            fragmentMain.setBtnToStart();
+        }
+
+        updateImgSettings();
+
+        if (MainActivity.m != null) {
+            if (MainActivity.m.isPlaying()) {
+                try {
+                    MainActivity.m.stop();
+                    MainActivity.m.release();
+                    MainActivity.m = null;
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        DialogError.createDialog(this)
+                .setTitle(AppUtils.getTextByLanguage(this, R.string.error_cz, R.string.error))
+                .setMessage(AppUtils.getTextByLanguage(this, R.string.too_many_errors_cz, R.string.too_many_errors))
+                .setListener(new OnErrorConfirmedListener() {
+                    @Override
+                    public void onErrorConfirmed() {
+                        appPrefs.edit().error().remove().apply();
+                    }
+                })
+                .show();
     }
 
     @Override

@@ -142,4 +142,10 @@
     <string name="file_error_cz">Chyba při přehrávání souboru.</string>
     <string name="file_error">Error playing file.</string>
 
+    <string name="delete_file_cz">Vymazat</string>
+    <string name="delete_file">Delete</string>
+
+    <string name="too_many_errors_cz">Přehrávání playlistu bylo zastaveno - příliš mnoho chyb při přehrávání audio souborů! Vypadá to, že váš playlist obsahuje příliš souborů, které nelze přehrát. Zkontolujte váš playlist.</string>
+    <string name="too_many_errors">Playlist playback stopped - too many errors while playing audio files! Looks like your playlist contains too many files that cannot be played. Check your playlist.</string>
+
 </resources>

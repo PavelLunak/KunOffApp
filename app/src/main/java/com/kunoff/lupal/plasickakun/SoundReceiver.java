@@ -3,22 +3,26 @@ package com.kunoff.lupal.plasickakun;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.PowerManager;
+import android.support.v4.content.LocalBroadcastManager;
 
 import com.kunoff.lupal.plasickakun.objects.ItemMedia;
+import com.kunoff.lupal.plasickakun.utils.AppConstants;
 import com.kunoff.lupal.plasickakun.utils.AppUtils;
 
 import java.io.IOException;
 import java.util.Random;
 
 
-public class SoundReceiver extends BroadcastReceiver {
+public class SoundReceiver extends BroadcastReceiver implements AppConstants {
 
     int positionToPlay;
     PowerManager.WakeLock wl;
+    int consecutiveErrorsCounter = 0;
 
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -60,14 +64,17 @@ public class SoundReceiver extends BroadcastReceiver {
                 MainActivity.m.setDataSource(context, Uri.parse(itemMediaToPlay.getPath()));
                 MainActivity.m.prepare();
             } catch (IOException e) {
+                if (!checkErrorsCount(context)) return;
                 findNextItemToPlay();
                 setItemPlay(context, positionToPlay);
                 return;
             } catch (NullPointerException e) {
+                if (!checkErrorsCount(context)) return;
                 findNextItemToPlay();
                 setItemPlay(context, positionToPlay);
                 return;
             } catch (IllegalArgumentException e) {
+                if (!checkErrorsCount(context)) return;
                 findNextItemToPlay();
                 setItemPlay(context, positionToPlay);
                 return;
@@ -81,6 +88,7 @@ public class SoundReceiver extends BroadcastReceiver {
                 MainActivity.m = null;
                 AlarmActions.enableAlarm(context, AppUtils.getTimeValueInMillis(MainActivity.appPrefs.delay().get(), MainActivity.appPrefs.delayUnit().get()));
                 if (wl != null) wl.release();
+                consecutiveErrorsCounter = 0;
             }
         });
 
@@ -88,8 +96,9 @@ public class SoundReceiver extends BroadcastReceiver {
             @Override
             public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
                 MainActivity.m = null;
-                AlarmActions.enableAlarm(context, AppUtils.getTimeValueInMillis(MainActivity.appPrefs.delay().get(), MainActivity.appPrefs.delayUnit().get()));
                 if (wl != null) wl.release();
+                if (!checkErrorsCount(context)) return false;
+                AlarmActions.enableAlarm(context, AppUtils.getTimeValueInMillis(MainActivity.appPrefs.delay().get(), MainActivity.appPrefs.delayUnit().get()));
                 return false;
             }
         });
@@ -100,6 +109,30 @@ public class SoundReceiver extends BroadcastReceiver {
     private void findNextItemToPlay() {
         if (MainActivity.appPrefs.random().get()) setRandomPosition();
         else getNextPositionToPlay();
+    }
+
+    private boolean checkErrorsCount(Context context) {
+        consecutiveErrorsCounter ++;
+
+        if (consecutiveErrorsCounter >= MAX_NUMBER_OF_CONSECUTIVE_PLAYBACK_ERRORS) {
+            consecutiveErrorsCounter = 0;
+            setAppPrefs(context);
+            AlarmActions.disableAlarm(context);
+            LocalBroadcastManager.getInstance(context).sendBroadcast(new Intent("ACTION_SERVICE_STARTET_BROADCAST"));
+            String msg = "Playlist playback stopped - too many errors while playing audio files! Looks like your playlist contains too many files that cannot be played. Check your playlist.";
+            if (MainActivity.appPrefs.languageCz().get()) msg = "Přehrávání playlistu bylo zastaveno - příliš mnoho chyb při přehrávání audio souborů! Vypadá to, že váš playlist obsahuje příliš souborů, které nelze přehrát. Zkontolujte váš playlist.";
+            AlarmActions.showNotification(context, msg);
+            return false;
+        }
+
+        return true;
+    }
+
+    private void setAppPrefs(Context context) {
+        SharedPreferences sharedpreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putInt("error", 1);
+        editor.commit();
     }
 
     private void getNextPositionToPlay() {

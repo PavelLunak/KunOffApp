@@ -23,4 +23,5 @@
     <color name="rb_text_color">#727272</color>
     <color name="btn_start">#04805b</color>
     <color name="text_blue">#0808FF</color>
+    <color name="error_text_color">#970000</color>
 </resources>

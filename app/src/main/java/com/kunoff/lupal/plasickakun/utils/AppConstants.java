@@ -34,6 +34,9 @@ public interface AppConstants {
     int TOOLBAR_ICON_SETTINGS = 2;
     int TOOLBAR_ICON_BACK = 3;
 
+    public static String PREFS_NAME = "MainActivity__AppPrefs";
+    int MAX_NUMBER_OF_CONSECUTIVE_PLAYBACK_ERRORS = 100;
+
     int[] DEFAULT_MEDIA_ITEMS_IDS = new int[] {
             R.raw.autohavarie,
             R.raw.bzucak,

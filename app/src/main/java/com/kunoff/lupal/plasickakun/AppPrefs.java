@@ -14,4 +14,5 @@ public interface AppPrefs {
     boolean disableHelpDefaultPlaylist();
     boolean random();
     boolean languageCz();
+    int error();
 }

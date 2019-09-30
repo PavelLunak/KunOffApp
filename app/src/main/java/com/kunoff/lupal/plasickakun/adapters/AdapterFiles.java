@@ -212,7 +212,7 @@ public class AdapterFiles extends RecyclerView.Adapter<AdapterFiles.DataViewHold
                 @Override
                 public void onClick(View view) {
                     DialogYesNo.createDialog(activity)
-                            .setTitle("Delete")
+                            .setTitle(AppUtils.getTextByLanguage(activity, R.string.delete_file_cz, R.string.delete_file))
                             .setMessage(AppUtils.getTextByLanguage(activity, R.string.question_delet_item_cz, R.string.question_delet_item))
                             .setListener(new YesNoSelectedListener() {
                                 @Override

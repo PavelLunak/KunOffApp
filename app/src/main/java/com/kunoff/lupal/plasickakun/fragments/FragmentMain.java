@@ -148,13 +148,13 @@ public class FragmentMain extends Fragment implements AppConstants {
         return toReturn;
     }
 
-    private void setBtnToStart() {
+    public void setBtnToStart() {
         btnStartStop.setBackgroundResource(R.drawable.btn_start_bg);
         btnStartStop.setTextColor(activity.getResources().getColor(R.color.btn_start_text_color));
         btnStartStop.setText(R.string.start);
     }
 
-    private void setBtnToStop() {
+    public void setBtnToStop() {
         btnStartStop.setBackgroundResource(R.drawable.btn_stop_bg);
         btnStartStop.setTextColor(activity.getResources().getColor(R.color.btn_stop_text_color));
         btnStartStop.setText(R.string.stop);

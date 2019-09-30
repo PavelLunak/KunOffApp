@@ -76,6 +76,8 @@ public class FragmentSettings extends Fragment implements AppConstants {
     void afterViews() {
         isAfterViews = true;
 
+        enableControls(MainActivity.isRunning);
+
         updateLanguage();
 
         if (AppUtils.isFragmentCurrent(FRAGMENT_NAME_FRAGMENT_SETTINGS, activity.getFm())) {
@@ -207,6 +209,7 @@ public class FragmentSettings extends Fragment implements AppConstants {
 
     @Click(R.id.label_set_playlist)
     void clickCreatePlaylist() {
+        if (!rbCzech.isEnabled()) return;
         Animators.animateButtonClick(label_set_playlist);
 
         if (MainActivity.appPrefs.customPlaylist().get()) checkPermission();
@@ -225,12 +228,14 @@ public class FragmentSettings extends Fragment implements AppConstants {
 
     @Click({R.id.rbCzech, R.id.img_cz})
     void clickCzech() {
+        if (!rbEnglish.isEnabled()) return;
         setCz();
         appPrefs.edit().languageCz().put(true).apply();
     }
 
     @Click({R.id.rbEnglish, R.id.img_eng})
     void clickEnglish() {
+        if (!rbCzech.isEnabled()) return;
         setEng();
         appPrefs.edit().languageCz().put(false).apply();
     }
@@ -301,5 +306,23 @@ public class FragmentSettings extends Fragment implements AppConstants {
         } else {
             activity.showFragmentAddFile(rb_playlist_default.isChecked());
         }
+    }
+
+    public void enableControls(boolean enable) {
+        rbCzech.setEnabled(!enable);
+        rbEnglish.setEnabled(!enable);
+        etFirstPlay.setEnabled(!enable);
+        etDelay.setEnabled(!enable);
+        rbFirstPlaySeconds.setEnabled(!enable);
+        rbFirstPlayMinutes.setEnabled(!enable);
+        rbFirstPlayHours.setEnabled(!enable);
+        rbDelaySeconds.setEnabled(!enable);
+        rbDelayMinutes.setEnabled(!enable);
+        rbDelayHours.setEnabled(!enable);
+        rb_playlist_default.setEnabled(!enable);
+        rb_playlist_custom.setEnabled(!enable);
+        switchRandom.setEnabled(!enable);
+
+        label_set_playlist.setBackground(activity.getResources().getDrawable(MainActivity.isRunning ? R.drawable.bg_btn_playlist_disabled : R.drawable.bg_btn_playlist));
     }
 }

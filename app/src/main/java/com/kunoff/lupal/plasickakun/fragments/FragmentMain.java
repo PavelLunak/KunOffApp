@@ -79,6 +79,9 @@ public class FragmentMain extends Fragment implements AppConstants {
         if (MainActivity.isRunning) stopFrightening();
         else startFrightening();
         activity.updateImgSettings();
+
+        FragmentSettings fragmentSettings = (FragmentSettings) activity.getFm().findFragmentByTag(FRAGMENT_NAME_FRAGMENT_SETTINGS);
+        if (fragmentSettings != null) fragmentSettings.enableControls(MainActivity.isRunning);
     }
 
     private void startFrightening() {

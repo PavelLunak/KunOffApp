@@ -620,9 +620,8 @@ public class MainActivity extends AppCompatActivity implements AppConstants, Fra
         FragmentMain fragmentMain = (FragmentMain) fragmentManager.findFragmentByTag(FRAGMENT_NAME_FRAGMENT_MAIN);
         if (fragmentMain != null) {
             fragmentMain.setBtnToStart();
+            if (AppUtils.isFragmentCurrent(FRAGMENT_NAME_FRAGMENT_MAIN, fragmentManager)) updateImgSettings();
         }
-
-        updateImgSettings();
 
         if (MainActivity.m != null) {
             if (MainActivity.m.isPlaying()) {
@@ -643,6 +642,7 @@ public class MainActivity extends AppCompatActivity implements AppConstants, Fra
                     @Override
                     public void onErrorConfirmed() {
                         appPrefs.edit().error().remove().apply();
+                        showMainFragment();
                     }
                 })
                 .show();
